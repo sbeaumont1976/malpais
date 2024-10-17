@@ -1,0 +1,194 @@
+---
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+    <style>
+      #title-main {
+        z-index: 10;
+        padding: 16px;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 3em;
+        font-weight: bolder;
+        animation: title-animation auto both;
+        animation-timeline: scroll(root block);
+        animation-range: 0 200px;
+      }
+      #progress {
+        z-index: 11;
+        position: fixed;
+        top: 0;
+        height: 1em;
+        background-color: red;
+        width: 0%;
+        animation: progress-grow auto linear;
+        animation-timeline: scroll(root block);
+      }
+      .pulsers {
+        display: flex;        
+        gap: 20px;
+        justify-content: center;
+      }
+      .pulser {
+        width: 30px;
+        height: 30px;
+        background: #09f;
+        border-radius: 50%;
+        position: relative;
+      }
+      .pulser::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        background: rgba(0, 153, 255, 0.5);
+        z-index: -1;
+        /*
+        animation-name: pulse;
+        animation-duration: 1s;
+        animation-delay: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        */
+        animation: pulse 1s ease-in-out infinite 1s alternate;
+      }
+      #servicios{
+        display: grid;
+        place-content: center;
+        padding: 15px;
+        font-size: 5rem;
+        font-weight: 900;
+        text-align: center;
+        letter-spacing: -.04em;
+      }
+      #servicios span {
+        display: block;
+        position: relative;
+        line-height: 1.1em;
+      }
+      #servicios span::before {
+        content: var(--content);
+        background: linear-gradient(90deg, var(--start-color), var(--endcolor));
+        position: absolute;
+        inset: 0;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: servicios-animation 9s infinite;
+        animation-delay: var(--delay, 0s);
+      }
+      .lorem-text{
+        padding: 25px;
+        background-color: rgba(0, 0, 0, .2);
+        border-radius: 5px;
+        border: 1px solid rgb(169, 169, 169);
+        animation: reveal-lorem auto both;
+        animation-timeline: view();
+        animation-range: entry 20% cover 40%;
+      }
+      @keyframes title-animation {
+        to {
+          background: rgba(43, 0, 255, 0.3);
+          backdrop-filter: blur(10px);
+          font-size: 1.5em;
+        }
+      }
+      @keyframes progress-grow {
+        from { width: 0;}
+        to { width: 100%;}
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1.4);
+          border: 1px solid blue; 
+          opacity: 0.3        
+        }
+      }
+      @keyframes reveal-lorem {
+        from {
+          opacity: 0;
+          translate: 0 100px;
+          scale: 0.5;
+        }
+        to {
+          opacity: 1;
+          translate: 0 0;
+          scale: 1;
+        }        
+      }
+      @keyframes servicios-animation {
+        0%, 16.67%, 100% {
+          opacity: 1;
+        }
+        33%, 83% {
+          opacity: 0;
+        }
+      }
+      body {
+        display: grid;
+        place-content: center;
+        min-height: 50vh;
+      }
+    </style>
+	</head>
+	<body>
+    
+    <h1 id="title-main">Malpaís DEV</h1>
+    <div id="progress"></div>
+
+    <section id="servicios">
+      <span style='--content: "Desarrollo."; --start-color: #007CF0; --endcolor: #00DFD8; --delay: 0s'>Desarrollo.</span>
+      <span style='--content: "Asesoramiento."; --start-color: #7928CA; --endcolor: #FF0080; --delay: 3s'>Asesoramiento.</span>
+      <span style='--content: "Servicios."; --start-color: #FF4D4D; --endcolor: #F9CB28; --delay: 6s'>Servicios.</span>
+    </section>
+
+    <section class="pulsers p-10">
+      <div class="pulser"></div>
+      <div class="pulser"></div>
+      <div class="pulser"></div>
+      <div class="pulser"></div>
+    </section>
+
+    <section class="p-20 text-2xl flex flex-col gap-10">
+    <div class="lorem-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
+    </div>
+    <div class="lorem-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
+    </div>
+    <div class="lorem-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
+    </div>
+    <div class="lorem-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
+    </div>
+    <div class="lorem-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
+    </div>
+    <div class="lorem-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
+    </div>
+    <div class="lorem-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
+    </div>
+    <div class="lorem-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
+    </div>
+    </section>
+	</body>
+</html>
