@@ -1,5 +1,7 @@
 ---
 import { Image } from 'astro:assets';
+import logo from '../assets/logo_dark.svg';
+import logoName from '../assets/logoName_dark.svg';
 import logo1 from '../assets/malpais_dark_megrim.svg';
 import logo2 from '../assets/malpais_dark_origen.svg';
 import logo3 from '../assets/malpais_light_melgrim.svg';
@@ -20,14 +22,17 @@ import logo4 from '../assets/malpais_light_origen.svg';
       #title-main {
         color: #8f8f8f;
         z-index: 10;
-        padding: 16px;
+        padding: 0px 10px;
         position: sticky;
         top: 0;
-        width: 100%;
-        text-align: center;
-        font-size: 2em;
-        font-weight: bolder;
-      }   
+        width: 100%;   
+        background-color: #3d3d3d;     
+      } 
+      #logo-div{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+      }  
       .img-light{
         background-color: #dfdfdf;
         padding: 4px;
@@ -35,6 +40,16 @@ import logo4 from '../assets/malpais_light_origen.svg';
     </style>
 	</head>
 	<body>
+    <div id="title-main" class="flex items-center justify-between"> <!-- Cambiado a justify-between -->
+      <div class="w-[10ch]">
+        <Image src={logo} style="height: 100px;" alt="logo" />
+      </div>
+      <div class="w-[23ch]"> <!-- Añadido margin-left: auto -->
+        <Image src={logoName} style="height: 60px;" alt="logo-title" />
+      </div>
+      <div class="flex-grow"></div>
+</div>
+
     <div style="columns: 2; column-gap: 1em;">
       <Image src={logo1} alt="logo-1" />
       <Image src={logo2} alt="logo-2" />
