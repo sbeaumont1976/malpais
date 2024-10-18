@@ -12,11 +12,11 @@ import logoName from '../assets/logoName_dark.svg';
 		<title>Astro</title>
     <style>
       body{
-        background-color: #252525;
+        background: linear-gradient(to bottom, black, #3d3d3d);
+        background-attachment: fixed;
         color: #CECECE;
       }
       #title-main {
-        /* background: rgba(0, 0, 0, 0.7); */
         backdrop-filter: blur(10px);
         animation: title-animation auto both;
         animation-timeline: scroll(root block);
@@ -60,7 +60,7 @@ import logoName from '../assets/logoName_dark.svg';
       }
       #title-main-2{     
         z-index: 10;
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(10px);
         animation: title-animation-2 auto both;
         animation-timeline: scroll(root block);
@@ -73,7 +73,7 @@ import logoName from '../assets/logoName_dark.svg';
         }
         to {
           opacity: 1;          
-          height: 100px;
+          height: 80px;
         }
       }       
       #progress {
@@ -94,7 +94,7 @@ import logoName from '../assets/logoName_dark.svg';
       .pulser {
         width: 30px;
         height: 30px;
-        background: #09f;
+        background: #FF6F00;
         border-radius: 50%;
         position: relative;
       }
@@ -106,7 +106,7 @@ import logoName from '../assets/logoName_dark.svg';
         top: 0;
         left: 0;
         border-radius: 50%;
-        background: rgba(0, 153, 255, 0.5);
+        background: rgba(255, 111, 0, 0.6);
         z-index: -1;
         animation: pulse 1s ease-in-out infinite 1s alternate;
       }                 
@@ -116,7 +116,7 @@ import logoName from '../assets/logoName_dark.svg';
         }
         100% {
           transform: scale(1.4);
-          border: 1px solid blue; 
+          border: 1px solid #FF6F00; 
           opacity: 0.3        
         }
       }
@@ -145,9 +145,11 @@ import logoName from '../assets/logoName_dark.svg';
 	</head>
 	<body>
 
-      <h1 id="title-main-2" class="px-10 flex items-center justify-start sticky top-0 w-full text-white">
-        <img src={logo.src} class="p-0" style="height: 100px;" alt="logo" />
-        <img src={logoName.src} style="height: 70px;" alt="logo" />
+      <h1 id="title-main-2" class="flex items-center justify-center sticky top-0 w-full text-white">
+        <div class="flex items-center justify-center -ml-2">
+          <img src={logo.src} class="p-0" style="height: 80px;" alt="logo" />
+          <img src={logoName.src} style="height: 60px;" alt="logo" />
+        </div>
       </h1>
       
       <h1 id="title-main" class="px-10 flex flex-col items-center justify-center sticky top-0 w-full text-white">
