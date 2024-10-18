@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import logo1 from '../assets/malpais_dark_megrim.svg';
+import logo2 from '../assets/malpais_dark_origen.svg';
+import logo3 from '../assets/malpais_light_melgrim.svg';
+import logo4 from '../assets/malpais_light_origen.svg';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Malpais DEV</title>
+    <style>
+      body {
+        background: #000;
+      }
+      #title-main {
+        color: #8f8f8f;
+        z-index: 10;
+        padding: 16px;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        font-weight: bolder;
+      }   
+      .img-light{
+        background-color: #dfdfdf;
+        padding: 4px;
+      }   
+    </style>
+	</head>
+	<body>
+      <Image src={logo1} alt="logo-1" />
+      <Image src={logo2} alt="logo-2" />
+      <div class="bg-gray-400 p-4 img-light"><Image src={logo3} alt="logo-3" /></div>
+      <div class="bg-gray-400 p-4 img-light"><Image src={logo4} alt="logo-4" /></div>
+	</body>
+</html>
