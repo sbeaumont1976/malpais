@@ -1,0 +1,81 @@
+---
+interface Props {
+  main?: boolean
+}
+
+import logo from '../assets/malpais_logo_dark.svg'
+import logoName from '../assets/malpais_name_dark.svg'
+import logoDescrip from '../assets/malpais_descrip_dark.svg'
+
+const { main = true } = Astro.props
+---
+
+<header
+  class:list={[
+    main ? 'title-scrolled' : 'h-[80px]',
+    'z-[10] bg-black/50 backdrop-blur-sm',
+    'sticky top-0 flex w-full items-center justify-center text-white',
+  ]}
+>
+  <div class="-ml-2 flex items-center justify-center">
+    <img src={logo.src} class="p-0" style="height: 50px;" alt="logo" />
+    <img src={logoName.src} style="height: 60px; margin-top: -10px;" alt="logo" />
+  </div>
+</header>
+
+{
+  main && (
+    <header class="title-main sticky top-0 flex w-full flex-col items-center justify-center p-10 text-white backdrop-blur-sm">
+      <img id="logo-descrip" src={logoDescrip.src} style="height: 350px;" alt="logo" />
+    </header>
+  )
+}
+
+<style>
+  .title-main {
+    animation: title-main-animation auto both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+  }
+  @keyframes title-main-animation {
+    0% {
+      opacity: 1;
+      z-index: 10;
+    }
+    to {
+      opacity: 0;
+      z-index: -100;
+    }
+  }
+  .title-scrolled {
+    height: 0;
+    opacity: 0;
+    animation: title-scrolled-animation auto both;
+    animation-timeline: scroll(root block);
+    animation-range: 190px 250px;
+  }
+  @keyframes title-scrolled-animation {
+    from {
+      opacity: 0;
+      height: 0;
+    }
+    to {
+      opacity: 1;
+      height: 80px;
+    }
+  }
+  #logo-descrip {
+    padding: 10px;
+    animation: logo-descrip-animation auto both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+  }
+  @keyframes logo-descrip-animation {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: 0px -150px;
+    }
+  }
+</style>

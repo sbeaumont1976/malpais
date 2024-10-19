@@ -1,0 +1,22 @@
+---
+
+---
+
+<div id="progress" class="fixed top-0 z-[11] bg-malpais"></div>
+
+<style>
+  #progress {
+    height: 0.3em;
+    width: 0%;
+    animation: progress-grow auto linear;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes progress-grow {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+</style>

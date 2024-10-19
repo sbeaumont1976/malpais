@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css'
-import LucideIcon from '../components/lucide-icons.astro'
-import { Github, Linkedin, Mail } from 'lucide'
+import Header from '../components/header.astro'
+import Progress from '../components/scroll-progress.astro'
+import Footer from '../components/footer.astro'
 ---
 
 <html lang="en">
@@ -20,21 +21,17 @@ import { Github, Linkedin, Mail } from 'lucide'
       }
     </style>
   </head>
-  <body class="m-0 flex w-full justify-center bg-fixed text-gray-200">
-    <div class="max-w-6xl">
-      <slot />
-    </div>
+  <body class="m-0 flex min-h-[100vh] w-full flex-col justify-between bg-fixed text-gray-200">
+    <Header />
 
-    <footer class="flex w-full flex-col items-center justify-center bg-black px-5 py-5 font-extralight md:py-10">
-      <div class="mb-4 flex items-center justify-center gap-4">
-        <LucideIcon icon={Linkedin} width="16" stroke-width="2" class="hover:text-malpais" />
-        <LucideIcon icon={Github} width="16" stroke-width="2" class="hover:text-malpais" />
-        <LucideIcon icon={Mail} width="16" stroke-width="2" class="hover:text-malpais" />
+    <Progress />
+
+    <main class="flex w-full justify-center px-5">
+      <div class="max-w-6xl">
+        <slot />
       </div>
-      <div class="flex w-full max-w-6xl items-center justify-between gap-2 text-xs md:text-sm">
-        <div>Copyright © 2024</div>
-        <div>malpais.dev</div>
-      </div>
-    </footer>
+    </main>
+
+    <Footer />
   </body>
 </html>

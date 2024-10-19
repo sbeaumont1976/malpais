@@ -1,9 +1,8 @@
 ---
-import logo from '../assets/malpais_logo_dark.svg'
-import logoName from '../assets/malpais_name_dark.svg'
 import '../styles/global.css'
-import LucideIcon from '../components/lucide-icons.astro'
-import { Github, Linkedin, Mail } from 'lucide'
+import Header from '../components/header.astro'
+import Progress from '../components/scroll-progress.astro'
+import Footer from '../components/footer.astro'
 ---
 
 <html lang="en">
@@ -20,33 +19,12 @@ import { Github, Linkedin, Mail } from 'lucide'
         font-family: 'Raleway', 'system-ui', sans-serif;
         background-color: #3d3d3d;
       }
-      #progress {
-        height: 0.3em;
-        width: 0%;
-        animation: progress-grow auto linear;
-        animation-timeline: scroll(root block);
-      }
-      @keyframes progress-grow {
-        from {
-          width: 0;
-        }
-        to {
-          width: 100%;
-        }
-      }
     </style>
   </head>
-  <body class="m-0 bg-fixed text-gray-200">
-    <header
-      class="sticky top-0 z-[10] flex h-14 w-full items-center justify-center bg-black/50 text-white backdrop-blur-sm transition-all duration-200 xl:h-20"
-    >
-      <div class="-ml-2 flex items-center justify-center">
-        <img src={logo.src} class="h-8 p-0 transition-all duration-200 xl:h-12" alt="logo" />
-        <img src={logoName.src} class="-mt-1 h-10 transition-all duration-200 xl:-mt-2 xl:h-14" alt="logo" />
-      </div>
-    </header>
+  <body class="m-0 min-h-[100vh] bg-fixed text-gray-200">
+    <Header main={false} />
 
-    <div id="progress" class="fixed top-0 z-[11] bg-malpais"></div>
+    <Progress />
 
     <slot name="title" />
 
@@ -56,16 +34,6 @@ import { Github, Linkedin, Mail } from 'lucide'
       </div>
     </main>
 
-    <footer class="flex w-full flex-col items-center justify-center bg-black px-5 py-5 font-extralight md:py-10">
-      <div class="mb-4 flex items-center justify-center gap-4">
-        <LucideIcon icon={Linkedin} width="16" stroke-width="2" class="hover:text-malpais" />
-        <LucideIcon icon={Github} width="16" stroke-width="2" class="hover:text-malpais" />
-        <LucideIcon icon={Mail} width="16" stroke-width="2" class="hover:text-malpais" />
-      </div>
-      <div class="flex w-full max-w-6xl items-center justify-between gap-2 text-xs md:text-sm">
-        <div>Copyright © 2024</div>
-        <div>malpais.dev</div>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>
