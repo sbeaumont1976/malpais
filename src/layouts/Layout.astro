@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css'
+import LucideIcon from '../components/lucide-icons.astro'
+import { Github, Linkedin, Mail } from 'lucide'
 ---
 
 <html lang="en">
@@ -22,5 +24,17 @@ import '../styles/global.css'
     <div class="max-w-6xl">
       <slot />
     </div>
+
+    <footer class="flex w-full flex-col items-center justify-center bg-black px-5 py-5 font-extralight md:py-10">
+      <div class="mb-4 flex items-center justify-center gap-4">
+        <LucideIcon icon={Linkedin} width="16" stroke-width="2" class="hover:text-malpais" />
+        <LucideIcon icon={Github} width="16" stroke-width="2" class="hover:text-malpais" />
+        <LucideIcon icon={Mail} width="16" stroke-width="2" class="hover:text-malpais" />
+      </div>
+      <div class="flex w-full max-w-6xl items-center justify-between gap-2 text-xs md:text-sm">
+        <div>Copyright © 2024</div>
+        <div>malpais.dev</div>
+      </div>
+    </footer>
   </body>
 </html>
