@@ -1,191 +1,183 @@
 ---
-import logo from '../assets/malpais_logo_dark.svg';
-import logoName from '../assets/malpais_name_dark.svg';
-import logoDescrip from '../assets/malpais_descrip_dark.svg';
+import Layout from '../layouts/Layout.astro'
+import logo from '../assets/malpais_logo_dark.svg'
+import logoName from '../assets/malpais_name_dark.svg'
+import logoDescrip from '../assets/malpais_descrip_dark.svg'
+import DecalogoItem from '../components/decalogo-item.astro'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-    <style>
-      body{
-        background: linear-gradient(to bottom, black, #3d3d3d);
-        background-attachment: fixed;
-        background-color: #3d3d3d;
-        color: #CECECE;
-      }
-      #title-main {
-        backdrop-filter: blur(10px);
-        animation: title-animation auto both;
-        animation-timeline: scroll(root block);
-        animation-range: 0 200px;
-      }
-      @keyframes title-animation {
-        0% {
-          opacity: 1;
-          z-index: 10;
-        }
-        to {          
-          opacity: 0;
-          z-index: -100;
-        }
-      }
-      #logo-descrip{
-        padding: 10px;
-        animation: logo-descrip-animation auto both;
-        animation-timeline: scroll(root block);
-        animation-range: 0 200px;
-      }
-      @keyframes logo-descrip-animation {
-        from {
-          translate: 0 0;
-        }
-        to {
-          translate: 0px -150px;          
-        }
-      }
-      #title-main-2{     
-        z-index: 10;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        animation: title-animation-2 auto both;
-        animation-timeline: scroll(root block);
-        animation-range: 190px 250px;        
-      }
-      @keyframes title-animation-2 {
-        from {
-          opacity: 0;
-          height: 0;
-        }
-        to {
-          opacity: 1;          
-          height: 80px;
-        }
-      }       
-      #progress {
-        height: 0.3em;
-        width: 0%;
-        animation: progress-grow auto linear;
-        animation-timeline: scroll(root block);
-      }
-      @keyframes progress-grow {
-        from { width: 0;}
-        to { width: 100%;}
-      }
-      .pulsers {
-        display: flex;        
-        gap: 20px;
-        justify-content: center;
-      }
-      .pulser {
-        width: 30px;
-        height: 30px;
-        background: #FF6F00;
-        border-radius: 50%;
-        position: relative;
-      }
-      .pulser::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        border-radius: 50%;
-        background: rgba(255, 111, 0, 0.6);
-        z-index: -1;
-        animation: pulse 1s ease-in-out infinite 1s alternate;
-      }                 
-      @keyframes pulse {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          transform: scale(1.4);
-          border: 1px solid #FF6F00; 
-          opacity: 0.3        
-        }
-      }
-      .lorem-text{
-        padding: 20px;
-        background-color: rgba(0, 0, 0, .2);
-        border-radius: 5px;
-        border: 1px solid rgb(169, 169, 169);
-        animation: reveal-lorem auto both;
-        animation-timeline: view();
-        animation-range: entry 20% cover 40%;
-      } 
-      @keyframes reveal-lorem {
-        from {
-          opacity: 0;
-          translate: 0 100px;
-          scale: 0.5;
-        }
-        to {
-          opacity: 1;
-          translate: 0 0;
-          scale: 1;
-        }        
-      }      
-    </style>
-	</head>
-	<body>
+<style>
+  #title-main {
+    backdrop-filter: blur(10px);
+    animation: title-animation auto both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+  }
+  @keyframes title-animation {
+    0% {
+      opacity: 1;
+      z-index: 10;
+    }
+    to {
+      opacity: 0;
+      z-index: -100;
+    }
+  }
+  #logo-descrip {
+    padding: 10px;
+    animation: logo-descrip-animation auto both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+  }
+  @keyframes logo-descrip-animation {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: 0px -150px;
+    }
+  }
+  #title-main-2 {
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    animation: title-animation-2 auto both;
+    animation-timeline: scroll(root block);
+    animation-range: 190px 250px;
+  }
+  @keyframes title-animation-2 {
+    from {
+      opacity: 0;
+      height: 0;
+    }
+    to {
+      opacity: 1;
+      height: 80px;
+    }
+  }
+  #progress {
+    height: 0.3em;
+    width: 0%;
+    animation: progress-grow auto linear;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes progress-grow {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  .pulsers {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  .pulser {
+    width: 30px;
+    height: 30px;
+    background: #ff6f00;
+    border-radius: 50%;
+    position: relative;
+  }
+  .pulser::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: rgba(255, 111, 0, 0.6);
+    z-index: -1;
+    animation: pulse 1s ease-in-out infinite 1s alternate;
+  }
+  @keyframes pulse {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1.4);
+      border: 1px solid #ff6f00;
+      opacity: 0.3;
+    }
+  }
+</style>
+<Layout>
+  <h1 id="title-main-2" class="sticky top-0 flex w-full items-center justify-center text-white">
+    <div class="-ml-2 flex items-center justify-center">
+      <img src={logo.src} class="p-0" style="height: 50px;" alt="logo" />
+      <img src={logoName.src} style="height: 60px; margin-top: -10px;" alt="logo" />
+    </div>
+  </h1>
 
-      <h1 id="title-main-2" class="flex items-center justify-center sticky top-0 w-full text-white">
-        <div class="flex items-center justify-center -ml-2">
-          <img src={logo.src} class="p-0" style="height: 50px;" alt="logo" />
-          <img src={logoName.src} style="height: 60px; margin-top: -10px;" alt="logo" />
-        </div>
-      </h1>
-      
-      <h1 id="title-main" class="p-10 flex flex-col items-center justify-center sticky top-0 w-full text-white">
-        <img id="logo-descrip" src={logoDescrip.src} style="height: 350px;" alt="logo" />
-      </h1>
+  <h1 id="title-main" class="sticky top-0 flex w-full flex-col items-center justify-center p-10 text-white">
+    <img id="logo-descrip" src={logoDescrip.src} style="height: 350px;" alt="logo" />
+  </h1>
 
-    <div id="progress" class="bg-malpais fixed top-0 z-[11]"></div>
+  <div id="progress" class="fixed top-0 z-[11] bg-malpais"></div>
 
-    <!-- <section id="servicios">
+  <!-- <section id="servicios">
       <span style='--content: "Desarrollo."; --start-color: #007CF0; --endcolor: #00DFD8; --delay: 0s'>Desarrollo.</span>
       <span style='--content: "Asesoramiento."; --start-color: #7928CA; --endcolor: #FF0080; --delay: 3s'>Asesoramiento.</span>
       <span style='--content: "Servicios."; --start-color: #FF4D4D; --endcolor: #F9CB28; --delay: 6s'>Servicios.</span>
     </section> -->
 
-    <section class="pulsers p-10">
-      <div class="pulser"></div>
-      <div class="pulser"></div>
-      <div class="pulser"></div>
-      <div class="pulser"></div>
-    </section>
+  <section class="pulsers p-10">
+    <div class="pulser"></div>
+    <div class="pulser"></div>
+    <div class="pulser"></div>
+    <div class="pulser"></div>
+  </section>
 
-    <section class="p-8 text-lg flex flex-col gap-10 z-0">
-      <div class="lorem-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
-      </div>
-      <div class="lorem-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
-      </div>
-      <div class="lorem-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
-      </div>
-      <div class="lorem-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
-      </div>
-      <div class="lorem-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
-      </div>
-      <div class="lorem-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
-      </div>
-      <div class="lorem-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
-      </div>
-      <div class="lorem-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione nihil exercitationem quod nesciunt? Corrupti doloremque autem accusamus eaque voluptatum vel, minima repellat sapiente enim quam, perspiciatis laborum. Porro, eius?
-      </div>
-    </section>
-	</body>
-</html>
+  <section class="z-0 mb-60 flex flex-col gap-10 p-8 text-lg">
+    <DecalogoItem title="Terreno difícil pero fértil para la innovación">
+      Aunque los proyectos de software pueden parecer complicados y desafiantes en su inicio, es en esos entornos
+      complejos donde se pueden crear soluciones innovadoras y personalizadas. Como el malpaís, el terreno difícil puede
+      dar lugar a un crecimiento fértil si se sabe cómo trabajar con él.
+    </DecalogoItem>
+
+    <DecalogoItem title="Resiliencia y adaptación">
+      En el desarrollo de software, los desafíos y obstáculos pueden ser intensos, pero con el enfoque correcto, se
+      puede transformar una situación compleja en una solución eficiente y eficaz. Al igual que la naturaleza se adapta,
+      <span class="font-semibold text-malpais">malpaís.dev</span> demuestra cómo nos adaptamos a los retos del desarrollo
+      de software para crear productos personalizados que prosperen en cualquier entorno.
+    </DecalogoItem>
+
+    <DecalogoItem title="Construcción sobre bases sólidas">
+      Al igual que el malpaís, nuestros desarrollos de software se construyen sobre bases tecnológicas sólidas,
+      utilizando principios firmes de arquitectura de software y desarrollo robusto para garantizar soluciones
+      escalables y duraderas.
+    </DecalogoItem>
+
+    <DecalogoItem title="Innovación en un entorno desafiante">
+      En el mundo del desarrollo de software a medida, enfrentamos constantemente desafíos únicos de nuestros clientes y
+      del mercado. <span class="font-semibold text-malpais">malpaís.dev</span> simboliza nuestra capacidad para encontrar
+      soluciones creativas y eficientes, incluso en los entornos más complejos.
+    </DecalogoItem>
+
+    <DecalogoItem title="Exploración continua de nuevos horizontes">
+      En <span class="font-semibold text-malpais">malpaís.dev</span> estamos siempre explorando nuevas tecnologías, enfoques
+      y metodologías para ofrecer soluciones de vanguardia que se ajusten a las necesidades cambiantes de nuestros clientes.
+    </DecalogoItem>
+
+    <DecalogoItem title="Un enfoque artesanal en cada detalle">
+      Tratamos cada proyecto con una atención artesanal. Cada solución de software es personalizada, asegurándonos de
+      que cada detalle funcione en armonía con el todo.
+    </DecalogoItem>
+
+    <DecalogoItem title="Transformación de lo inhóspito en lo habitable">
+      Al igual que el malpaís convierte un terreno difícil en un ecosistema único, <span
+        class="font-semibold text-malpais">malpaís.dev</span
+      > toma desafíos complejos y los convierte en plataformas de software eficientes y amigables para el usuario, facilitando
+      la transformación digital de nuestros clientes.
+    </DecalogoItem>
+
+    <DecalogoItem title="Una visión clara entre la incertidumbre">
+      En el malpaís, la claridad puede ser difícil de encontrar, pero quienes lo conocen saben leer el terreno. Del
+      mismo modo, en <span class="font-semibold text-malpais">malpaís.dev</span> guiamos a nuestros clientes a través de
+      la incertidumbre tecnológica, ayudándolos a trazar el camino más claro y eficaz hacia el éxito.
+    </DecalogoItem>
+  </section>
+</Layout>

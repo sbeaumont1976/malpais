@@ -1,0 +1,26 @@
+---
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon_light.svg" />
+    <meta name="description" content="Malpais DEV - Desarrollo de software y consulting" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Malpais DEV</title>
+    <style>
+      body {
+        background: linear-gradient(to bottom, black, #3d3d3d);
+        background-color: #3d3d3d;
+        font-family: system-ui;
+      }
+    </style>
+  </head>
+  <body class="m-0 flex w-full justify-center bg-fixed text-gray-200">
+    <div class="max-w-6xl">
+      <slot />
+    </div>
+  </body>
+</html>
