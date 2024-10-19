@@ -6,7 +6,12 @@ import DecalogoItem from '../components/decalogo-item.astro'
 <style></style>
 
 <Layout title="Decálogo">
-  <div class="mt-5 bg-malpais py-2 text-center text-2xl font-semibold" slot="title">Decálogo</div>
+  <div
+    class:list={['mt-5 py-2 text-center text-2xl font-semibold', 'bg-gradient-to-r from-malpais from-60% to-black']}
+    slot="title"
+  >
+    Decálogo
+  </div>
 
   <section class="z-0 flex flex-col gap-10 py-8 text-lg">
     <DecalogoItem title="Terreno difícil pero fértil para la innovación">
